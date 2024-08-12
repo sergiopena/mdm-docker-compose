@@ -1,0 +1,196 @@
+
+version: "3.5"
+services:
+    client:
+        image: isergiopena/mdm-client
+        container_name:  client
+        ports: 
+            - "8000:80"
+        environment:
+          NODE_API_URL: "http://localhost:8001"
+        volumes:
+          - "./logs:/app/logs"
+        networks:
+          - dotstat_network
+
+    node-api:
+        image: isergiopena/mdm-node-api
+        container_name: node-api
+        ports: 
+            - "8001:80"
+        environment:
+          - NODE_API_URL=node-api
+          - NODE_API_LOGFILE=/logs/NodeApiWs.log
+        networks:
+          - dotstat_network
+        depends_on:
+          dbboot:
+            condition: service_completed_successfully  
+        volumes:
+          - "./logs:/logs"
+          - "./config/nodesConfig.json:/app/config/nodesConfig.json"
+
+    dm:
+        image: isergiopena/mdm-dm
+        container_name: dm
+        ports:
+          - "8004:80"
+        networks:
+          - dotstat_network
+        environment:
+          - DM_LOGFILE=/logs/DmApiWs.log
+          - AUTHDB_NAME=${AUTHDB_NAME}
+          - AUTHDB_USER=${AUTHDB_USER}
+          - AUTHDB_PASSWORD=${AUTHDB_PASSWORD}
+          - DATABASE_SERVER=db 
+          - RMDB_NAME=${RMDB_NAME}
+          - RMDB_USER=${RMDB_USER}
+          - RMDB_PASSWORD=${RMDB_PASSWORD}
+          - DDB_NAME=${DDB_NAME}
+          - DDB_USER=${DDB_USER}
+          - DDB_PASSWORD=${DDB_PASSWORD}
+        volumes:
+          - "./logs:/logs"
+        depends_on:
+          dbboot:
+            condition: service_completed_successfully 
+        healthcheck:
+          test: curl http://localhost
+          interval: 10s
+          timeout: 3s
+          retries: 10
+          start_period: 10s       
+
+    metadata-api:
+        image: isergiopena/mdm-metadata-api
+        container_name: metadata-api
+        ports:
+          - "8006:80"
+        networks:
+          - dotstat_network
+        environment:
+          - METADATA_LOGFILE=/logs/MetadataApiWs.log
+          - DATABASE_SERVER=db 
+          - RMDB_NAME=${RMDB_NAME}
+          - RMDB_USER=${RMDB_USER}
+          - RMDB_PASSWORD=${RMDB_PASSWORD}
+        depends_on:
+          dbboot:
+            condition: service_completed_successfully 
+        volumes:
+          - "./logs:/logs"
+
+
+    nsi:
+        image: isergiopena/mdm-nsi
+        container_name: nsi
+        ports: 
+            - "8005:80"
+        networks:
+          - dotstat_network
+        environment:
+          - MASTOREDB_NAME=${MASTOREDB_NAME}
+          - MASTOREDB_USER=${MASTOREDB_USER}
+          - MASTOREDB_PASSWORD=${MASTOREDB_PASSWORD}
+          - AUTHDB_NAME=${AUTHDB_NAME}
+          - AUTHDB_USER=${AUTHDB_USER}
+          - AUTHDB_PASSWORD=${AUTHDB_PASSWORD}
+          - DATABASE_SERVER=db
+          - NSI_LOGDIR=/logs
+        depends_on:
+          dbboot:
+            condition: service_completed_successfully
+        volumes:
+          - "./logs:/logs"
+          
+    ma:
+        image: isergiopena/mdm-ma
+        container_name: ma
+        ports: 
+            - "8002:80"
+        networks:
+          - dotstat_network
+        environment:
+          - MA_LOGDIR=/logs
+          - MASTOREDB_NAME=${MASTOREDB_NAME}
+          - MASTOREDB_USER=${MASTOREDB_USER}
+          - MASTOREDB_PASSWORD=${MASTOREDB_PASSWORD}
+          - AUTHDB_NAME=${AUTHDB_NAME}
+          - AUTHDB_USER=${AUTHDB_USER}
+          - AUTHDB_PASSWORD=${AUTHDB_PASSWORD}
+          - DATABASE_SERVER=db
+        volumes:
+          - "./logs:/logs"
+        depends_on:
+          dbboot:
+            condition: service_completed_successfully
+        healthcheck:
+          test: curl http://localhost
+          interval: 10s
+          timeout: 3s
+          retries: 10
+          start_period: 10s 
+
+
+    db:
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+        container_name: mssql
+        ports:
+          - "${SQL_PORT}:1433"
+        environment:
+          - SA_PASSWORD=${MSSQL_PASSWORD}
+          - MSSQL_PID=Developer
+          - ACCEPT_EULA=Y
+        healthcheck:
+          test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${MSSQL_PASSWORD} -Q "SELECT 1" -b -o /dev/null
+          interval: 30s
+          timeout: 3s
+          retries: 10
+          start_period: 3s          
+        volumes:
+          - "db-data:/var/opt/mssql/data"
+        networks:
+          - dotstat_network
+
+    dbboot:
+        image: isergiopena/mdm-dbboot
+        container_name: dbboot
+        depends_on:
+          db:
+            condition: service_healthy
+        environment:
+          - MSSQL_FQDN=db
+          - MSSQL_USER=${MSSQL_USER}
+          - MSSQL_PASSWORD=${MSSQL_PASSWORD}
+          - AUTHDB_NAME=${AUTHDB_NAME}
+          - AUTHDB_USER=${AUTHDB_USER}
+          - AUTHDB_PASSWORD=${AUTHDB_PASSWORD}
+          - MASTOREDB_NAME=${MASTOREDB_NAME}
+          - MASTOREDB_USER=${MASTOREDB_USER}
+          - MASTOREDB_PASSWORD=${MASTOREDB_PASSWORD}
+          - DDB_NAME=${DDB_NAME}
+          - DDB_USER=${DDB_USER}
+          - DDB_PASSWORD=${DDB_PASSWORD}
+          - RMDB_NAME=${RMDB_NAME}
+          - RMDB_USER=${RMDB_USER}
+          - RMDB_PASSWORD=${RMDB_PASSWORD}
+        networks:
+          - dotstat_network
+
+    configure:
+        image: isergiopena/mdm-configure
+        container_name: configure
+        networks:
+          - dotstat_network
+        depends_on:
+          ma:
+            condition: service_healthy
+          dm:
+            condition: service_healthy
+        
+volumes:
+  db-data:
+
+networks:
+  dotstat_network:
+    name: dotstat_common_network

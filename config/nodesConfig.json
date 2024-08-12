@@ -1,0 +1,403 @@
+[
+	{
+	  "General": {
+		"ID": "NODE",
+		"Name": "Node",
+		"DefaultItemsViewMode": "Table",
+		"canViewUnallowedBuilderNodes": false,
+		"Order": null,
+		"Invisible": false
+	  },
+	  "Agencies": [
+		{
+		  "Id": "SDMX",
+		  "Name": {
+			"en": "SDMX",
+			"it": "SDMX"
+		  }
+		},
+		{
+		  "Id": "ESTAT",
+		  "Name": {
+			"en": "Eurostat",
+			"it": "Eurostat"
+		  }
+		},
+		{
+		  "Id": "OECD",
+		  "Name": {
+			"en": "Organisation for Economic Co-operation and Development",
+			"it": "Organizzazione per la cooperazione e lo sviluppo economico (OCSE)"
+		  }
+		},
+		{
+		  "Id": "ECB",
+		  "Name": {
+			"en": "European Central Bank",
+			"it": "Banca Centrale Europea (BCE)"
+		  }
+		},
+		{
+		  "Id": "WB",
+		  "Name": {
+			"en": "World Bank",
+			"it": "Banca Mondiale"
+		  }
+		},
+		{
+		  "Id": "BIS",
+		  "Name": {
+			"en": "Bank for International Settlements",
+			"it": "Banca dei Regolamenti Internazionali"
+		  }
+		},
+		{
+		  "Id": "IMF",
+		  "Name": {
+			"en": "International Monetary Fund",
+			"it": "Fondo Monetario Internazionale"
+		  }
+		},
+		{
+		  "Id": "UNSD",
+		  "Name": {
+			"en": "United Nation Statistical Division",
+			"it": "Divisione Statistica delle Nazioni Unite"
+		  }
+		},
+		{
+		  "Id": "IAEG-SDGs",
+		  "Name": {
+			"en": "Inter-Agency and Expert Group on SDGs",
+			"it": "IAEG-SDGs"
+		  }
+		},
+		{
+		  "Id": "FAO",
+		  "Name": {
+			"en": "Food and Agriculture Organisation",
+			"it": "Organizzazione per l'alimentazione e l'agricoltura"
+		  }
+		},
+		{
+		  "Id": "ILO",
+		  "Name": {
+			"en": "International Labour Organization",
+			"it": "Organizzazione Internazionale del Lavoro"
+		  }
+		},
+		{
+		  "Id": "UNICEF",
+		  "Name": {
+			"en": "United Nations Children's Fund",
+			"it": "Fondo delle Nazioni Unite per l'infanzia"
+		  }
+		},
+		{
+		  "Id": "IT1",
+		  "Name": {
+			"en": "Istat",
+			"it": "Istat"
+		  }
+		}
+	  ],
+	  "Endpoint": {
+		"NSIEndpoint": "http://host.docker.internal:8005/rest",
+		"SupportAllCompleteStubs": false,
+		"SupportPostFilters": false,
+		"InitialWSDL": null,
+		"NSIEndpointType": "REST",
+		"MAEndpoint": "http://host.docker.internal:8002/",
+		"MARunAsAdministratorUsername": null,
+		"MARunAsAdministratorPassword": null,
+		"DMEndpoint": "http://host.docker.internal:8004/api/DMApi",
+		"LDAPEndpoint": null,
+		"ActiveDirectoryEndpoint": null,
+		"MetadataBaseURL": "http://localhost:8006",
+		"PingArtefact": "ConceptScheme",
+		"NSIReadOnlyUsername": null,
+		"NSIReadOnlyPassword": null,
+		"Namespace": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/webservices",
+		"BypassCache": false
+	  },
+	  "AnnotationTabs": {
+		"Tabs": [],
+		"IsTextCollapsed": true
+	  },
+	  "Proxy": {
+		"Enabled": false,
+		"Address": null,
+		"Port": 0,
+		"Username": null,
+		"Password": null,
+		"UseSystemProxy": false
+	  },
+	  "Search": {
+		"ExcludeCodelists": [
+		  "CL_UPDATE_STATUS",
+		  "SDMX_M_PERIODS",
+		  "SDMX_Q_PERIODS",
+		  "SDMX_S_PERIODS",
+		  "SDMX_H_PERIODS"
+		],
+		"ExcludeConceptSchemes": [
+		  "COMPONENT_ROLES"
+		]
+	  },
+	  "Annotations": {
+		"HaveMetadata": {
+		  "Id": "HAVE_METADATA",
+		  "Type": "HAVE_METADATA"
+		},
+		"DDBDataflow": {
+		  "Id": "DDB_DATAFLOW",
+		  "Type": "DDB_DATAFLOW"
+		},
+		"Metadataset": {
+		  "Id": "AssociatedMetadataSet",
+		  "Type": "AssociatedMetadataSet"
+		},
+		"AssociatedCube": {
+		  "Id": "Associated_Cube",
+		  "Type": "Associated_Cube"
+		},
+		"CustomDSD": {
+		  "Id": "CUSTOM_DSD",
+		  "Type": "CUSTOM_DSD"
+		},
+		"Changed": {
+		  "Id": "CHANGED",
+		  "Type": "CHANGED"
+		},
+		"LayoutRow": {
+		  "Id": "LAYOUT_ROW",
+		  "Type": "LAYOUT_ROW"
+		},
+		"LayoutColumn": {
+		  "Id": "LAYOUT_COLUMN",
+		  "Type": "LAYOUT_COLUMN"
+		},
+		"LayoutRowSection": {
+		  "Id": "LAYOUT_ROW_SECTION",
+		  "Type": "LAYOUT_ROW_SECTION"
+		},
+		"LayoutFilter": {
+		  "Id": "LAYOUT_FILTER",
+		  "Type": "LAYOUT_FILTER"
+		},
+		"NotDisplayed": {
+		  "Id": "NOT_DISPLAYED",
+		  "Type": "NOT_DISPLAYED"
+		},
+		"FullName": {
+		  "Id": "FULL_NAME",
+		  "Type": "FULL_NAME"
+		},
+		"Default": {
+		  "TimePeriodStart": "TIME_PERIOD_START",
+		  "TimePeriodEnd": "TIME_PERIOD_END",
+		  "LastNObservation": "LAST_N_OBSERVATION",
+		  "LastNPeriod": "LAST_N_PERIOD",
+		  "Id": "DEFAULT",
+		  "Type": "DEFAULT"
+		},
+		"ConceptSchemesOrder": {
+		  "Id": "ORDER",
+		  "Type": "ORDER"
+		},
+		"CategorySchemesOrder": {
+		  "Id": "ORDER",
+		  "Type": "ORDER"
+		},
+		"CodelistsOrder": {
+		  "Id": "ORDER",
+		  "Type": "ORDER"
+		},
+		"CategorisationsOrder": {
+		  "Id": "ORDER",
+		  "Type": "ORDER"
+		},
+		"AttachedFilePath": {
+		  "Id": "ATTACHED_FILE_PATH",
+		  "Type": "ATTACHED_FILE_PATH"
+		},
+		"RestrictedForPublication": {
+		  "Id": "RESTRICTED_FOR_PUBLICATION",
+		  "Type": "RESTRICTED_FOR_PUBLICATION"
+		},
+		"DCAT_IsMultilingual": {
+		  "Id": "DCAT_ISMULTILINGUAL",
+		  "Type": "DCAT_ISMULTILINGUAL"
+		},
+		"CustomIsPresentational": {
+		  "Id": "CUSTOM_IS_PRESENTATIONAL",
+		  "Type": "CUSTOM_IS_PRESENTATIONAL"
+		},
+		"LayoutDataflowKeywords": {
+		  "Id": "LAYOUT_DATAFLOW_KEYWORDS",
+		  "Type": "LAYOUT_DATAFLOW_KEYWORDS"
+		},
+		"LayoutCriteriaSelection": {
+		  "Id": "LAYOUT_CRITERIA_SELECTION",
+		  "Type": "LAYOUT_CRITERIA_SELECTION"
+		},
+		"LayoutAttachedDataFiles": {
+		  "Id": "LAYOUT_ATTACHED_DATA_FILES",
+		  "Type": "LAYOUT_ATTACHED_DATA_FILES"
+		},
+		"LayoutDefaultPresentation": {
+		  "Id": "LAYOUT_DEFAULT_PRESENTATION",
+		  "Type": "LAYOUT_DEFAULT_PRESENTATION"
+		},
+		"LayoutDecimalSeparator": {
+		  "Id": "LAYOUT_DECIMAL_SEPARATOR",
+		  "Type": "LAYOUT_DECIMAL_SEPARATOR"
+		},
+		"LayoutNumberOfDecimals": {
+		  "Id": "LAYOUT_DECIMALS_NUMBER",
+		  "Type": "LAYOUT_DECIMALS_NUMBER"
+		},
+		"LayoutReferenceMetadata": {
+		  "Id": "LAYOUT_REFERENCE_METADATA",
+		  "Type": "LAYOUT_REFERENCE_METADATA"
+		},
+		"LayoutEmptyCellPlaceholder": {
+		  "Id": "LAYOUT_EMPTY_CELL_PLACEHOLDER",
+		  "Type": "LAYOUT_EMPTY_CELL_PLACEHOLDER"
+		},
+		"LayoutDataflowNotes": {
+		  "Id": "LAYOUT_DATAFLOW_NOTES",
+		  "Type": "LAYOUT_DATAFLOW_NOTES"
+		},
+		"LayoutMaxTableCells": {
+		  "Id": "LAYOUT_MAX_TABLE_CELLS",
+		  "Type": "LAYOUT_MAX_TABLE_CELLS"
+		},
+		"LayoutTerritorialDimensionIds": {
+		  "Id": "LAYOUT_GEO_IDS",
+		  "Type": "LAYOUT_GEO_IDS"
+		},
+		"LayoutDataflowSource": {
+		  "Id": "LAYOUT_DATAFLOW_SOURCE",
+		  "Type": "LAYOUT_DATAFLOW_SOURCE"
+		},
+		"LastUpdate": {
+		  "Id": "LAST_UPDATE",
+		  "Type": "LAST_UPDATE"
+		},
+		"LinkedDataflowNode": {
+		  "Id": "LINKED_DATAFLOW_NODE",
+		  "Type": "LINKED_DATAFLOW_NODE"
+		},
+		"DataflowCatalogType": {
+		  "Id": "DATAFLOW_CATALOG_TYPE",
+		  "Type": "DATAFLOW_CATALOG_TYPE"
+		},
+		"LayoutMapFilter": {
+		  "Id": "LAYOUT_MAP_FILTER",
+		  "Type": "LAYOUT_MAP_FILTER"
+		},
+		"LayoutDataflowHidden": {
+		  "Id": "LAYOUT_DATAFLOW_HIDDEN",
+		  "Type": "LAYOUT_DATAFLOW_HIDDEN"
+		},
+		"TemporalDimOrder": {
+		  "Id": "LAYOUT_TEMPORAL_ORDER",
+		  "Type": "LAYOUT_TEMPORAL_ORDER"
+		},
+		"DisabledViewers": {
+		  "Id": "DISABLED_VIEWERS",
+		  "Type": "DISABLED_VIEWERS"
+		},
+		"TableLockedDims": {
+		  "Id": "LAYOUT_TABLE_LOCKED_DIMS",
+		  "Type": "LAYOUT_TABLE_LOCKED_DIMS"
+		},
+		"HCLReference": {
+		  "Id": "HCL_REFERENCE",
+		  "Type": "HCL_REFERENCE"
+		},
+		"DDBContentConstraint": {
+		  "Id": "DDB_CONTENT_CONSTRAINT",
+		  "Type": "DDB_CONTENT_CONSTRAINT"
+		},
+		"AnticipationExceedingMaxNumRecords": {
+		  "Id": "ANITICIP_EXCEEDING_MAX_NUM_REC",
+		  "Type": "ANITICIP_EXCEEDING_MAX_NUM_REC"
+		},
+		"NonReadyForProduction": {
+		  "Id": "NON_READY_FOR_PRODUCTION",
+		  "Type": "NON_READY_FOR_PRODUCTION"
+		},
+		"ReadyForProduction": {
+		  "Id": "READY_FOR_PRODUCTION",
+		  "Type": "READY_FOR_PRODUCTION"
+		},
+		"DataFlowHeaderCustom": {
+		  "Id": "DATAFLOW_HEADER_CUSTOM",
+		  "Type": "DATAFLOW_HEADER_CUSTOM"
+		},
+		"AttributeAsDim": {
+		  "Id": "ATTRIBUTE_AS_DIM",
+		  "Type": "ATTRIBUTE_AS_DIM"
+		},
+		"LayoutAggregateCells": {
+		  "Id": "LAYOUT_AGGREGATE_CELLS",
+		  "Type": "LAYOUT_AGGREGATE_CELLS"
+		},
+		"LayoutChartPrimaryDimCartesian": {
+		  "Id": "LAYOUT_CHART_PRIMARY_DIM_CARTESIAN",
+		  "Type": "LAYOUT_CHART_PRIMARY_DIM_CARTESIAN"
+		},
+		"LayoutChartSecondaryDimCartesian": {
+		  "Id": "LAYOUT_CHART_SECONDARY_DIM_CARTESIAN",
+		  "Type": "LAYOUT_CHART_SECONDARY_DIM_CARTESIAN"
+		},
+		"LayoutChartFilterCartesian": {
+		  "Id": "LAYOUT_CHART_FILTER_CARTESIAN",
+		  "Type": "LAYOUT_CHART_FILTER_CARTESIAN"
+		},
+		"LayoutGraphLockedDimsCartesian": {
+		  "Id": "LAYOUT_GRAPH_LOCKED_DIMS_CARTESIAN",
+		  "Type": "LAYOUT_GRAPH_LOCKED_DIMS_CARTESIAN"
+		},
+		"LayoutChartPrimaryDimRadial": {
+		  "Id": "LAYOUT_CHART_PRIMARY_DIM_RADIAL",
+		  "Type": "LAYOUT_CHART_PRIMARY_DIM_RADIAL"
+		},
+		"LayoutChartSecondaryDimRadial": {
+		  "Id": "LAYOUT_CHART_SECONDARY_DIM_RADIAL",
+		  "Type": "LAYOUT_CHART_SECONDARY_DIM_RADIAL"
+		},
+		"LayoutChartFilterRadial": {
+		  "Id": "LAYOUT_CHART_FILTER_RADIAL",
+		  "Type": "LAYOUT_CHART_FILTER_RADIAL"
+		},
+		"LayoutGraphLockedDimsRadial": {
+		  "Id": "LAYOUT_GRAPH_LOCKED_DIMS_RADIAL",
+		  "Type": "LAYOUT_GRAPH_LOCKED_DIMS_RADIAL"
+		},
+		"LayoutCategorySchemesOrder": {
+		  "Id": "ORDER",
+		  "Type": "ORDER"
+		}
+	  },
+	  "DcatApIt": {
+		"MSD": null
+	  },
+	  "DataBrowser": {
+		"DataBrowserUrl": null,
+		"Enable": false,
+		"URL": "",
+		"NodeID": null,
+		"Password": "",
+		"ProxyURL": "",
+		"ProxyPort": "",
+		"ProxyUsername": "",
+		"ProxyPassword": "",
+		"ProxyEnable": false,
+		"HTTPAuthEnable": false
+	  },
+	  "Plugins": []
+	}
+  ]
